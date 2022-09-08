@@ -24,7 +24,7 @@ function turnOff() {
 }
 
 function checkTemp() {
-    exec('/opt/vc/bin/vcgencmd measure_temp', (err, stdout, stderr) => {
+    exec('$(which vcgencmd) measure_temp', (err, stdout, stderr) => {
         let temp = stdout.trim().split('=')[1].split('\'')[0]
         console.log('Current temperature is: ' + temp + '\'C')
         if (temp > 55 && fanState !== 1) {
